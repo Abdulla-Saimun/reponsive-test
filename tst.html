@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tst.css">
+    <title>test</title>
+</head>
+<body>
+    <!-- Nav bar -->
+    <div class="navbar">
+        <div class="container flex">
+            <h1 class="logo">test</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- form -->
+
+    <section class="frm">
+        <div class="main-container">
+            <ul id="todos">
+
+            </ul>
+            <form>
+                <input type="text" name="todo" id="todo">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </section>
+    <div class="boxxe">
+        <div class="oneb">
+            <div class="twob">
+                <div class="threeb">
+                    <div class="fourb">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="clr">
+        <div class="div1">
+            <div class="div2">
+                <div class="div3">
+                    <div class="div4">
+                        <div class="div5">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bd-flag">
+        <div class="stick"></div>
+        <div class="square">
+            <div class="circle"></div>
+        </div>
+        
+    </div>
+
+    
+
+    <script>
+        const todoList = document.querySelector('#todos');
+        const form = document.querySelector('form');   
+        const input = document.querySelector("[name='todo']");
+
+
+        // life cycle
+
+        const existinTodos = JSON.parse(localStorage.getItem('todos'));
+        console.log(existinTodos);
+
+
+
+        const todoData = existinTodos || [];
+        // todoData.forEach(todo => {
+        //     addTodo(todo);
+        // })
+
+        function addTodo(todoText) {
+            todoData.push(todoText);
+            const li = document.createElement('li');
+            li.innerHTML = todoText;
+            todoList.appendChild(li);
+            localStorage.setItem('todos', JSON.stringify(todoData));
+        }
+
+        form.onsubmit = (event) => {
+            event.preventDefault();
+            addTodo(input.value);
+            input.value = '';
+        }
+
+    </script>
+</body>
+</html>
